@@ -1,5 +1,4 @@
 from tkinter import *
-from winsound import PlaySound, SND_FILENAME, SND_ASYNC
 import time
 import os
 
