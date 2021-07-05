@@ -8,12 +8,8 @@ ws.title('Work Timer')
 ws.config(bg='black')
 ws.resizable(height=False,width=False)
 
-##For playing acoutic sound whenever a button is clicked for feedback
-def play():
-    duration = 0.5  # seconds
-    freq = 440  # Hz
-    os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
-
+def playSound():
+    os.system('say "Done.')
 
 counter = -1
 running = False
@@ -34,13 +30,13 @@ def counter_label(lbl):
     count()     
 
 def Count(lblCount):
-    play()
+    playSound()
     count = lblCount['text']
     countIncremented = int(count) + 1
     lblCount['text'] = countIncremented
 
 def CountDecrement(lblCount):
-    play()
+    playSound()
     count = lblCount['text']
     countIncremented = int(count) - 1
     lblCount['text'] = countIncremented
