@@ -1,6 +1,6 @@
 from tkinter import *
 import time
-import os
+import asyncio
 
 ws = Tk()
 ws.geometry('350x400+1000+300')
@@ -8,8 +8,9 @@ ws.title('Work Timer')
 ws.config(bg='black')
 ws.resizable(height=False,width=False)
 
-def playSound():
-    os.system('say "Done.')
+##This is used for more visual feedback
+async def Wait():
+    time.sleep(0.5)
 
 counter = -1
 running = False
@@ -30,13 +31,17 @@ def counter_label(lbl):
     count()     
 
 def Count(lblCount):
-    playSound()
+    loop = asyncio.get_event_loop()
+    tasks = [Wait()]
+    loop.run_until_complete(asyncio.wait(tasks))
     count = lblCount['text']
     countIncremented = int(count) + 1
     lblCount['text'] = countIncremented
 
 def CountDecrement(lblCount):
-    playSound()
+    loop = asyncio.get_event_loop()
+    tasks = [Wait()]
+    loop.run_until_complete(asyncio.wait(tasks))
     count = lblCount['text']
     countIncremented = int(count) - 1
     lblCount['text'] = countIncremented
@@ -134,6 +139,7 @@ tap_btn = Button(
     ws, 
     text='Count Up', 
     width=20, 
+    bg='white',
     height=3, 
     state='disabled', 
     command=lambda:Count(label_count)
@@ -143,6 +149,7 @@ tapDown_btn = Button(
     ws, 
     text='Count Down', 
     width=20, 
+    bg='white',
     state='disabled', 
     command=lambda:CountDecrement(label_count)
 )
