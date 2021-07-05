@@ -1,6 +1,7 @@
 from tkinter import *
 from winsound import PlaySound, SND_FILENAME, SND_ASYNC
 import time
+import os
 
 ws = Tk()
 ws.geometry('350x400+1000+300')
@@ -10,7 +11,9 @@ ws.resizable(height=False,width=False)
 
 ##For playing acoutic sound whenever a button is clicked for feedback
 def play():
-    return PlaySound("click_one.wav", SND_FILENAME|SND_ASYNC)
+    duration = 0.5  # seconds
+    freq = 440  # Hz
+    os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
 
 
 counter = -1
