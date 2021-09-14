@@ -53,7 +53,7 @@ def StopTimer():
     reset_btn['state']='normal'
     running = False
 
-def ResetTimer(lbl):
+def ResetTimer(lbl, lblCount):
     global counter
     counter=-1
     if running==False:      
@@ -61,6 +61,7 @@ def ResetTimer(lbl):
         lbl['text']='0'
     else:                          
         lbl['text']=''
+        lblCount['text']='0'
 
 def CalculateValues(seconds):
     timeValue = e1.get()
@@ -122,7 +123,7 @@ reset_btn = Button(
     text='Reset', 
     width=15, 
     state='disabled', 
-    command=lambda:ResetTimer(label_time)
+    command=lambda:ResetTimer(label_time, label_count)
     )
 
 tap_btn = Button(
