@@ -2,6 +2,10 @@ from tkinter import *
 import time
 import asyncio
 
+# Configurations
+defaultTasksPerHour = 120  #Edit this one and safe this file to adjust the default tasks per hour value as needed
+# end of configurations
+
 ws = Tk()
 ws.geometry('350x400+1000+300')
 ws.title('Work Timer')
@@ -158,7 +162,7 @@ lblExpected.place(x=185, y=70)
 e1 = Entry(ws)
 
 e1.grid(row=0, column=1)
-e1.insert(10, '70')
+e1.insert(10, defaultTasksPerHour)
 start_btn.place(x=0, y=340)
 stop_btn.place(x=120, y=340)
 reset_btn.place(x=240, y=340)
